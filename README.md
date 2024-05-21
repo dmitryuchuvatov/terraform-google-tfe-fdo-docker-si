@@ -34,14 +34,18 @@ cd terraform-google-tfe-fdo-docker-si
 The current content is below:
 
 ```
-region              = "eu-west-3"                           # AWS region to deploy in
-environment_name    = "dmitry-fdo"                          # Name of the environment, used in naming of resources
-vpc_cidr            = "10.200.0.0/16"                       # The IP range for the VPC
-route53_zone        = "tf-support.hashicorpdemo.com"        # The domain of your hosted zone in Route 53
-route53_subdomain   = "dmitry-fdo"                          # The subomain of the URL
-cert_email          = "dmitry.uchuvatov@hashicorp.com"      # The email address used to register the certificate                                                                                                     tfe_release         = "v202404-2"                           # TFE release version (https://developer.hashicorp.com/terraform/enterprise/releases)
-tfe_password        = "Password1#"                          # TFE encryption password                         
-tfe_license         = "02MV4U...."                          # Value from the license file                                                                                                                      
+project             = "hc-8847d0246e5e4b388e7b87e6bf8"                              # GCP Project ID to create resources in
+environment_name    = "fdo"                                                         # Name of the environment, used in naming of resources
+region              = "europe-west4"                                                # Google Cloud region to deploy in
+vpc_cidr            = "10.200.0.0/16"                                               # The IP range for the VPC in CIDR format
+dns_zone            = "hc-8847d0246e5e4b388e7b87e6bf8.gcp.sbx.hashicorpdemo.com"    # DNS zone used in the URL. Can be obtained from Cloud DNS section on GCP portal
+dns_record          = "fdo"                                                         # The record for your URL. Must be 4-5 letter, e.g. "tfe7" or "test2"
+cert_email          = "dmitry.uchuvatov@hashicorp.com"                              # The email address used to register the certificate
+db_password         = "Password1#"                                                  # Password for PostgreSQL database   
+tfe_release         = "v202404-2"                                                   # TFE release version (https://developer.hashicorp.com/terraform/enterprise/releases)
+tfe_password        = "Password1#"                                                  # TFE encryption password                         
+tfe_license         = "02MV4U...."                                                  # Value from the license file
+
 ```
 
 ## Authenticate to gcloud
@@ -69,12 +73,11 @@ When prompted, type **yes** and hit **Enter** to start provisioning GCP infrastr
 You should see the similar result:
 
 ```
-Apply complete! Resources: 32 added, 0 changed, 0 destroyed.
+Apply complete! Resources: 18 added, 0 changed, 0 destroyed.
 
 Outputs:
 
-ssh_login = "ssh -i tfesshkey.pem ubuntu@dmitry-fdo.tf-support.hashicorpdemo.com"
-tfe_hostname = "https://dmitry-fdo.tf-support.hashicorpdemo.com"
+tfe_url = "https://fdo.hc-8847d0246e5e4b388e7b87e6bf8.gcp.sbx.hashicorpdemo.com"
 ```
 
 ## Next steps
