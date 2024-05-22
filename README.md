@@ -4,12 +4,13 @@ This repository creates a new installation of TFE FDO in External Services mode 
 
 # Diagram
 
+![tfe_fdo_external_services_on_gcp](https://github.com/dmitryuchuvatov/terraform-google-tfe-fdo-docker-si/assets/119931089/4798d52c-8a18-451c-8ba2-d92f52e985eb)
 
 
 # Prerequisites
 + Have Terraform installed as per the [official documentation](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli)
 
-+ Have gcloud installed as per the [official documentation]([https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli](https://cloud.google.com/sdk/docs/install))
++ Have **gcloud** installed as per the [official documentation](https://cloud.google.com/sdk/docs/install)
 
 + GCP account
 
@@ -27,7 +28,6 @@ git clone https://github.com/dmitryuchuvatov/terraform-google-tfe-fdo-docker-si.
 
 ```
 cd terraform-google-tfe-fdo-docker-si
-
 ```
 
 ## Rename the file called `terraform.tfvars-sample` to `terraform.tfvars` and replace the values with your own.
@@ -45,7 +45,6 @@ db_password         = "Password1#"                                              
 tfe_release         = "v202404-2"                                                   # TFE release version (https://developer.hashicorp.com/terraform/enterprise/releases)
 tfe_password        = "Password1#"                                                  # TFE encryption password                         
 tfe_license         = "02MV4U...."                                                  # Value from the license file
-
 ```
 
 ## Authenticate to gcloud
